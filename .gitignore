@@ -1,0 +1,9 @@
+node_modules
+pnpm-debug.log*
+
+/package/**/*.js
+/package/**/*.js.map
+/package/**/*.d.ts
+
+/web/node_modules
+/web/build
