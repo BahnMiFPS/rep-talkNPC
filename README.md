@@ -3,7 +3,7 @@
 Check out the new and revamped version of the rep_talkNPC in action:
 
 - **[Preview Video](https://youtu.be/xuSjrBG-gRY)**
-- **[Source Code on GitHub](https://github.com/Rep-Scripts/rep-tablet)**
+- **[Source Code on GitHub](https://github.com/BahnMiFPS/rep-talkNPC)**
 
 Join our community or get support:
 
@@ -16,30 +16,36 @@ Join our community or get support:
 
 ## **Introduction**
 
-Welcome to the new version of `rep_talkNPC`. We bring to you a platform with fresh UI designs that are highly configurable, from UI elements to ped features. Please note that this release does not include jobs, and is not a drag-and-drop solution; it is a foundation for you to build upon and integrate with your own npc/job systems.
+Welcome to the new version of [rep-talkNPC](https://github.com/Rep-Scripts/rep-talkNPC). We bring to you a platform with fresh UI designs that are highly configurable, from UI elements to ped features. Please note that this release does not include jobs, and is not a drag-and-drop solution; it is a foundation for you to build upon and integrate with your own npc/job systems.
 
 ---
+
+## **Installation**
+
+```
+git clone https://github.com/BahnMiFPS/rep-talkNPC.git
+cd rep-talkNPC/web
+pnpm i
+pnpm build
+```
+
+Drag and drop the folder into your project and start it in your FiveM server.cfg.
 
 ## **How to Use**
 
 ### **Examples**
 
 - Refer to `cl_ex.lua` where we've set up a `/testnpc` command enabling you to spawn a sample NPC on your server.
-- Additional documentation...
+- We have also included the code snippet that we used in the feature video for your future reference.
+- _Document will be updated_
+
+# ![cl_ex](https://i.imgur.com/RekJMsT.png)
 
 ### **UI Changes**
 
 - Navigate to the `/web` folder to start modifying the UI.
 - Run `pnpm start` in your terminal to launch the UI in your local web environment.
 - Post modifications, execute `pnpm build` followed by a script restart in-game to see your changes.
-
----
-
-## **Installation**
-
-Drag and drop the files into your project, followed by appropriate configurations to set it up with your existing system.
-
-> Detailed instructions to be added...
 
 ---
 
@@ -83,5 +89,4 @@ Explore our other high-quality products tailored for QB/ESX:
 
 Verified and protected under:
 
-![DMCA Protection Certificate](https://i.imgur.com/DMh5xiO.png)
-[DMCA Certificate](https://www.dmca.com/r/597rj6e)
+[DMCA Certificate](https://www.dmca.com/r/deyjek2)
