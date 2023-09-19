@@ -17,12 +17,12 @@ local function CreateCam()
     RenderScriptCams(true, true, 1000, 1, 1)
 end
 
-local function changeDialog(e)
+local function changeDialog(_label, _elements)
     SendReactMessage("changeDialog", {
-        msg = e.label, -- thanh tin nhắn
-        elements = e.elements
+        msg = _label, -- thanh tin nhắn
+        elements = _elements
     })
-    dialog = e.elements
+    dialog = _elements
 end
 
 local function updateMessage(label)
@@ -31,8 +31,8 @@ local function updateMessage(label)
     })
 end
 
-local function talkNPC(id)
-    local npc = NPC[id]
+local function talkNPC(_id)
+    local npc = NPC[_id]
     currentNPC = npc
     CreateCam()
     interect = true
@@ -41,21 +41,21 @@ local function talkNPC(id)
         msg = npc.startMSG,
         elements = npc.elements,
         npcName = npc.name,
-        npcTag = npc.position,
+        npcTag = npc.tag,
         npcColor = npc.color
     })
     dialog = npc.elements
 end
 
-local function CreateNPC(pedData, elements)
+local function CreateNPC(_pedData, _elements)
     npcId = npcId + 1
-    RequestModel(GetHashKey(pedData.npc))
-    while not HasModelLoaded(GetHashKey(pedData.npc)) do
+    RequestModel(GetHashKey(_pedData.npc))
+    while not HasModelLoaded(GetHashKey(_pedData.npc)) do
         Wait(1)
     end
-    local ped = CreatePed(0, GetHashKey(pedData.npc), pedData.coords.x, pedData.coords.y, pedData.coords.z,
-        pedData.heading, false, true)
-    SetEntityHeading(ped, pedData.heading)
+    local ped = CreatePed(0, GetHashKey(_pedData.npc), _pedData.coords.x, _pedData.coords.y, _pedData.coords.z,
+        _pedData.coords.w, false, true)
+    SetEntityHeading(ped, _pedData.coords.w)
     SetPedFleeAttributes(ped, 0, 0)
     SetPedDiesWhenInjured(ped, false)
     SetPedKeepTask(ped, true)
@@ -63,15 +63,15 @@ local function CreateNPC(pedData, elements)
     SetEntityInvincible(ped, true)
     FreezeEntityPosition(ped, true)
     TaskLookAtEntity(ped, PlayerPedId(), -1, 2048, 3)
-    SetModelAsNoLongerNeeded(GetHashKey(pedData.npc))
-    if pedData.animName then
-        RequestAnimDict(pedData.animName)
-        while not HasAnimDictLoaded(pedData.animName) do
+    SetModelAsNoLongerNeeded(GetHashKey(_pedData.npc))
+    if _pedData.animName then
+        RequestAnimDict(_pedData.animName)
+        while not HasAnimDictLoaded(_pedData.animName) do
             Wait(1)
         end
-        TaskPlayAnim(ped, pedData.animName, pedData.animDist, 8.0, 0.0, -1, 1, 0, 0, 0, 0)
-    elseif pedData.animScenario then
-        TaskStartScenarioInPlace(ped, pedData.animScenario, 0, true)
+        TaskPlayAnim(ped, _pedData.animName, _pedData.animDist, 8.0, 0.0, -1, 1, 0, 0, 0, 0)
+    elseif _pedData.animScenario then
+        TaskStartScenarioInPlace(ped, _pedData.animScenario, 0, true)
     end
     exports[Config.Target]:AddTargetEntity(ped, {
         options = {{
@@ -80,7 +80,7 @@ local function CreateNPC(pedData, elements)
                 talkNPC(entity)
             end,
             icon = "fas fa-user-friends",
-            label = Config.Talk:format(pedData.name)
+            label = Config.Talk:format(_pedData.name)
         }},
         distance = 3.0
     })
@@ -88,12 +88,12 @@ local function CreateNPC(pedData, elements)
         id = npcId,
         npc = ped,
         resource = GetInvokingResource(),
-        coords = pedData.coords,
-        name = pedData.name,
-        position = pedData.position,
-        color = pedData.color,
-        startMSG = pedData.startMSG or 'Hello',
-        elements = elements
+        coords = _pedData.coords,
+        name = _pedData.name,
+        tag = _pedData.tag,
+        color = _pedData.color,
+        startMSG = _pedData.startMSG or 'Hello',
+        elements = _elements
     }
     return ped
 end
@@ -121,12 +121,12 @@ RegisterNetEvent('rep-talkNPC:client:close', function()
     SendReactMessage('close')
 end)
 
-RegisterNUICallback('click', function(data) -- truyền xuống data.value là id của elementss
+RegisterNUICallback('click', function(_data) -- truyền xuống data.value là id của elementss
     SetPedTalk(currentNPC.npc)
-    if dialog[data + 1].shouldClose then
+    if dialog[_data + 1].shouldClose then
         SendReactMessage('close')
     end
-    dialog[data + 1].action()
+    dialog[_data + 1].action()
 end)
 
 exports('CreateNPC', function(...)
@@ -162,9 +162,9 @@ CreateThread(function()
     end
 end)
 
-AddEventHandler('onClientResourceStop', function(resource)
+AddEventHandler('onResourceStop', function(_resource)
     for k, v in pairs(NPC) do
-        if v.resource == resource then
+        if v.resource == _resource then
             DeleteEntity(k)
         end
     end

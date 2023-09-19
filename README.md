@@ -4,7 +4,7 @@
 
 Check out the new and revamped version of the rep_talkNPC in action:
 
-- [Preview Video](https://youtu.be/xuSjrBG-gRY)
+- **[Preview Video](https://youtu.be/xuSjrBG-gRY)**
 - [Source Code on GitHub](https://github.com/BahnMiFPS/rep-talkNPC)
 
 Join our community or get support:
@@ -16,7 +16,7 @@ Join our community or get support:
 
 ---
 
-## Introduction
+## 👋 Introduction
 
 Welcome to the new version of [rep-talkNPC](https://github.com/Rep-Scripts/rep-talkNPC). We bring to you a platform with fresh UI designs that are highly configurable, from UI elements to ped features.
 
@@ -24,48 +24,13 @@ Welcome to the new version of [rep-talkNPC](https://github.com/Rep-Scripts/rep-t
 
 ---
 
-## Installation
+## 📚 Documentation
 
-```
-git clone https://github.com/BahnMiFPS/rep-talkNPC.git
-cd rep-talkNPC/web
-pnpm i
-pnpm build
-```
-
-Drag and drop the folder into your project and start it in your FiveM server.cfg.
-
-## UI Changes
-
-- Navigate to the `/web` folder to start modifying the UI.
-- Run `pnpm start` in your terminal to launch the UI in your local web environment.
-- Post modifications, execute `pnpm build` followed by a script restart in-game to see your changes.
-
-## Examples
-
-- Refer to `cl_ex.lua` where we've set up a `/testnpc` command enabling you to spawn a sample NPC on your server.
-- We have also included the code snippet that we used in the feature video for your future reference.
-- _Document will be updated_
-
-# ![cl_ex](https://i.imgur.com/RekJMsT.png)
+https://rep-scripts.gitbook.io/rep-scripts/free-scripts/rep-talknpc
 
 ---
 
-## 🛠️ Updates
-
-### Update 1.0
-
-- Initial Release
-
-### Update 1.1
-
-- Details to be updated
-
-Stay tuned for more updates!
-
----
-
-## Dependencies
+## ⚙️ Dependencies
 
 Ensure that you have the following frameworks installed:
 
