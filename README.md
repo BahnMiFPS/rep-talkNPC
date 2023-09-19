@@ -1,6 +1,6 @@
 # ![rep_talkNPC](https://i.imgur.com/HQ9GNsj.png)
 
-## Please star this repo if you find this helpful <3
+### :star: Enjoyed our free projects? Star it to show support and help others discover it! ❤️
 
 Check out the new and revamped version of the rep_talkNPC in action:
 
