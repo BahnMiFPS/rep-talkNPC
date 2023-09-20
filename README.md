@@ -2,6 +2,8 @@
 
 ### :star: Enjoyed our free projects? Star it to show support and help others discover it! ❤️
 
+Check out the new and revamped version of the rep_talkNPC in action:
+
 - **[Preview Video](https://youtu.be/xuSjrBG-gRY)**
 - [Source Code on GitHub](https://github.com/BahnMiFPS/rep-talkNPC)
 

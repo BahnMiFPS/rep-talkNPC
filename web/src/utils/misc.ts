@@ -1,6 +1,6 @@
 // Will return whether the current environment is in a regular browser
 
-import { Elements, ShowData } from "../typings/configs"
+import { ShowData } from "../typings/configs"
 import { debugData } from "./debugData"
 
 // and not CEF
@@ -16,6 +16,7 @@ export const debugShow = () => {
     {
       action: "show",
       data: {
+        npcColor: "red",
         npcName: "Rep Scripts",
         npcTag: "Construction Worker",
         msg: "Hello, my name is Chip Peterson! \n \n I'm in charge of the site, how can I help you?",

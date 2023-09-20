@@ -10,7 +10,7 @@ const ConfigProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [config, setConfig] = useState<Config>({
-    primaryColor: "#C2255C",
+    primaryColor: "#DE0059",
     colorScheme: "dark",
     secondaryColor: "#1971C2",
     secondaryShade: 4,
