@@ -146,7 +146,7 @@ CreateThread(function()
         if currentNPC and interect == true then
             local ped = PlayerPedId()
             local pos = GetEntityCoords(ped)
-            if #(pos - currentNPC.coords) > 5 then
+            if #(vec3(pos.x - pos.y - pos.z) - currentNPC.coords) > 5 then
                 SetNuiFocus(false, false)
                 ClearFocus()
                 RenderScriptCams(false, true, 1000, true, false)
