@@ -8,7 +8,6 @@ import {
   SimpleGrid,
   Divider,
   Paper,
-  // Divider,
 } from "@mantine/core"
 import { theme } from "../theme"
 import ScaleFade from "../transitions/ScaleFade"

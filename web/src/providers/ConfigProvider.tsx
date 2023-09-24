@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react"
 import { fetchNui } from "../utils/fetchNui"
 import { useNuiEvent } from "../hooks/useNuiEvent"
 import { debugShow, isEnvBrowser } from "../utils/misc"
-import { Config, ConfigContext, ShowData } from "../typings/configs"
+import { Config, ConfigContext } from "../typings/configs"
 
 const ConfigCtx = createContext<ConfigContext | null>(null)
 

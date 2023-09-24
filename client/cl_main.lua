@@ -74,14 +74,14 @@ local function CreateNPC(_pedData, _elements)
         TaskStartScenarioInPlace(ped, _pedData.animScenario, 0, true)
     end
     exports[Config.Target]:AddTargetEntity(ped, {
-        options = {{
+        options = { {
             type = "client",
             action = function(entity)
                 talkNPC(entity)
             end,
             icon = "fas fa-user-friends",
             label = Config.Talk:format(_pedData.name)
-        }},
+        } },
         distance = 3.0
     })
     NPC[ped] = {
@@ -146,7 +146,7 @@ CreateThread(function()
         if currentNPC and interect == true then
             local ped = PlayerPedId()
             local pos = GetEntityCoords(ped)
-            if #(vec3(pos.x - pos.y - pos.z) - currentNPC.coords) > 5 then
+            if #(vector3(pos.x - currentNPC.coords.x, pos.y - currentNPC.coords.y, pos.z - currentNPC.coords.z)) > 5 then
                 SetNuiFocus(false, false)
                 ClearFocus()
                 RenderScriptCams(false, true, 1000, true, false)
@@ -169,4 +169,3 @@ AddEventHandler('onResourceStop', function(_resource)
         end
     end
 end)
-
