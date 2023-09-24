@@ -31,8 +31,8 @@ jobs:
       - name: Install dependencies and run build
         run: |
           cd web
-          yarn install
-          yarn build
+          pnpm install
+          pnpm build
 
       - name: Bundle files
         run: |
