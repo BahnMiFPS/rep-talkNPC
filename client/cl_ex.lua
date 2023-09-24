@@ -7,7 +7,7 @@ RegisterCommand("testnpc", function()
         animName = "mini@strip_club@idles@bouncer@base",
         animDist = "base",
         tag = "Bot",
-        color = "#339A00",
+        color = "blue.7",
         startMSG = 'Hello, I am the Rep Scripts Bot'
     }, {
         [1] = {
@@ -21,7 +21,7 @@ RegisterCommand("testnpc", function()
             label = "What categories of scripts do you have?",
             shouldClose = false,
             action = function()
-                exports['rep-talkNPC']:changeDialog( "We have clean and dirty jobs, which one do you want to choose?",
+                exports['rep-talkNPC']:changeDialog("We have clean and dirty jobs, which one do you want to choose?",
                     {
                         [1] = {
                             label = "Clean jobs",
