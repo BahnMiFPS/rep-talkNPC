@@ -1,5 +1,5 @@
 Config = {}
-Config.Target = 'qb-target' -- // qb-target or qtarget, ox-tartget will auto conv
+Config.Target = 'qb-target' -- // qb-target or qtarget
 Config.Talk = "Talk to %s"
 Config.Color = {
     -- If youre too lazy to pick a color. Use a range of Mantine default colors

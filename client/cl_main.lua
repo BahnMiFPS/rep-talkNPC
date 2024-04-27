@@ -69,21 +69,33 @@ local function CreateNPC(_pedData, _elements)
         while not HasAnimDictLoaded(_pedData.animName) do
             Wait(1)
         end
-        TaskPlayAnim(ped, _pedData.animName, _pedData.animDist, 8.0, 0.0, -1, 1, 0, 0, 0, 0)
+        TaskPlayAnim(ped, _pedData.animName, _pedData.animDist, 8.0, 0.0, -1, 1, 0, false, false, false)
     elseif _pedData.animScenario then
         TaskStartScenarioInPlace(ped, _pedData.animScenario, 0, true)
     end
-    exports[Config.Target]:AddTargetEntity(ped, {
-        options = { {
-            type = "client",
-            action = function(entity)
-                talkNPC(entity)
-            end,
-            icon = "fas fa-user-friends",
-            label = Config.Talk:format(_pedData.name)
-        } },
-        distance = 3.0
-    })
+    if Config.Target == 'ox_target' then
+        exports.ox_target:addLocalEntity(ped, {
+            {
+                name = Config.Talk:format(_pedData.name),
+                label = Config.Talk:format(_pedData.name),
+                icon = "fas fa-user-friends",
+                onSelect = function(data)
+                    talkNPC(data.entity)
+                end,
+            },
+        })
+    else
+        exports[Config.Target]:AddTargetEntity(ped, {
+            options = { {
+                action = function(entity)
+                    talkNPC(entity)
+                end,
+                icon = "fas fa-user-friends",
+                label = Config.Talk:format(_pedData.name)
+            } },
+            distance = 3.0
+        })
+    end
     NPC[ped] = {
         id = npcId,
         npc = ped,
