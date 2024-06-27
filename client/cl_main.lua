@@ -37,14 +37,25 @@ local function talkNPC(_id)
     CreateCam()
     interect = true
     SetNuiFocus(true, true)
+    local cloneE = {}
+    for k,v in pairs (npc.elements) do
+       if v.canInteract then
+            local success, resp = pcall(v.canInteract)
+            if success and resp then
+                cloneE[#cloneE+1] = v
+            end
+       else
+            cloneE[#cloneE+1] = v
+       end
+    end
     SendReactMessage("show", {
         msg = npc.startMSG,
-        elements = npc.elements,
+        elements = cloneE,
         npcName = npc.name,
         npcTag = npc.tag,
         npcColor = npc.color
     })
-    dialog = npc.elements
+    dialog = cloneE
 end
 
 local function CreateNPC(_pedData, _elements)
