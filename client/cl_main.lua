@@ -18,11 +18,22 @@ local function CreateCam()
 end
 
 local function changeDialog(_label, _elements)
+    local cloneE = {}
+    for k,v in pairs (_elements) do
+       if v.canInteract then
+            local success, resp = pcall(v.canInteract)
+            if success and resp then
+                cloneE[#cloneE+1] = v
+            end
+       else
+            cloneE[#cloneE+1] = v
+       end
+    end
     SendReactMessage("changeDialog", {
         msg = _label, -- thanh tin nhắn
-        elements = _elements
+        elements = cloneE
     })
-    dialog = _elements
+    dialog = cloneE
 end
 
 local function updateMessage(label)
