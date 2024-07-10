@@ -71,12 +71,20 @@ end
 
 local function CreateNPC(_pedData, _elements)
     npcId = npcId + 1
-    RequestModel(GetHashKey(_pedData.npc))
-    while not HasModelLoaded(GetHashKey(_pedData.npc)) do
+    if type(_pedData.npc) ~= 'number' then _pedData.npc = joaat(_pedData.npc) end
+    if HasModelLoaded(_pedData.npc) then
+        goto skip
+    else
+        if not IsModelValid(_pedData.npc) and not IsModelInCdimage(_pedData.npc) then
+            return
+        end
+    end
+    RequestModel(_pedData.npc)
+    while not HasModelLoaded(_pedData.npc) do
         Wait(1)
     end
-    local ped = CreatePed(0, GetHashKey(_pedData.npc), _pedData.coords.x, _pedData.coords.y, _pedData.coords.z,
-        _pedData.coords.w, false, true)
+    ::skip::
+    local ped = CreatePed(0, _pedData.npc, _pedData.coords.x, _pedData.coords.y, _pedData.coords.z, _pedData.coords.w, false, true)
     SetEntityHeading(ped, _pedData.coords.w)
     SetPedFleeAttributes(ped, 0, 0)
     SetPedDiesWhenInjured(ped, false)
@@ -85,7 +93,7 @@ local function CreateNPC(_pedData, _elements)
     SetEntityInvincible(ped, true)
     FreezeEntityPosition(ped, true)
     TaskLookAtEntity(ped, PlayerPedId(), -1, 2048, 3)
-    SetModelAsNoLongerNeeded(GetHashKey(_pedData.npc))
+    SetModelAsNoLongerNeeded(_pedData.npc)
     if _pedData.animName then
         RequestAnimDict(_pedData.animName)
         while not HasAnimDictLoaded(_pedData.animName) do
